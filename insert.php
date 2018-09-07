@@ -1,5 +1,5 @@
 <?php
-	//Connection to Database
+	
 	$con = mysqli_connect("localhost", "web13_usr", "Ueuj114~", "kuebomare");
 	
 	if(!$con)
