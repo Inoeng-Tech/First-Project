@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 	//connection to Database
 	$con = mysqli_connect("localhost", "web13_usr", "Ueuj114~", "kuebomare");
@@ -12,8 +11,8 @@
 	$Date = $_POST['date'];
 	$Foto = $_POST['foto'];
 	$Source = $_POST['source'];
-
-	$sql = "INSERT INTO foto_DB (name,date,foto,source) VALUES ('$Name','$Date','$Foto','source')";
+	
+	$sql = "INSERT INTO foto_DB (name,date,foto,source) VALUES ('$Name','$Date','$Foto','$Source')";
 	
 	if(!mysqli_query($con,$sql))
 	{
@@ -23,34 +22,73 @@
 	{
 		echo 'Inserted';
 	}
-	header("refresh:1; url=display_foto.php");
+	#header("refresh:1; url=index_foto.php");
 	
-=======
-<?php
-	//connection to Database
-	$con = mysqli_connect("localhost", "web13_usr", "Ueuj114~", "kuebomare");
 	
-	if(!$con)
-	{
-		echo 'Not cnnected To Server';
-	}
 	
-	$Name = $_POST['name'];
-	$Date = $_POST['date'];
-	$Foto = $_POST['foto'];
-	$Source = $_POST['source'];
+	//====UPLOAD IMAGE	
 
-	$sql = "INSERT INTO foto_DB (name,date,foto,source) VALUES ('$Name','$Date','$Foto','source')";
-	
-	if(!mysqli_query($con,$sql))
-	{
-		echo 'Not Inserted';	
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["foto"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+	// Check if image file is a actual image or fake image
+
+	if(isset($_POST["submit"])) {
+    	$check = getimagesize($_FILES["foto"]["tmp_name"]);
+    	if($check !== false) {
+    	    echo "File is an image - " . $check["mime"] . ".";
+        	$uploadOk = 1;
+    	} else {
+        	echo "File is not an image.";
+        	$uploadOk = 0;
+    	}
 	}
-	else
-	{
-		echo 'Inserted';
+	// Check if file already exists
+	if (file_exists($target_file)) {
+    	echo "Sorry, file already exists.";
+    	$uploadOk = 0;
 	}
-	header("refresh:1; url=display_foto.php");
+	// Check file size
+	if ($_FILES["foto"]["size"] > 500000) {
+    	echo "Sorry, your file is too large.";
+    	$uploadOk = 0;
+	}
+	// Allow certain file formats
+	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+	&& $imageFileType != "gif" ) {
+    	echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    	$uploadOk = 0;
+	}
+	// Check if $uploadOk is set to 0 by an error
+	if ($uploadOk == 0) {
+    	echo "Sorry, your file was not uploaded.";
 	
->>>>>>> f46d70d14d843f6dd63e01857677adbdc8ab81eb
+	// if everything is ok, try to upload file
+	} else {
+    	if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
+        	echo "The file ". basename( $_FILES["foto"]["name"]). " has been uploaded.";
+    	} else {
+        	echo "Sorry, there was an error uploading your file.";
+    	}
+	}
+
+
+
+
 ?>
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
