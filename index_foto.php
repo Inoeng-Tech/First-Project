@@ -8,10 +8,11 @@
 	}
 	
 	$Name = $_POST['name'];
-	$Email = $_POST['email'];
-	$Mobile = $_POST['mobile'];
-	
-	$sql = "INSERT INTO test_DB (name,email,mobile) VALUES ('$Name','$Email','$Mobile')";
+	$Date = $_POST['date'];
+	$Foto = $_POST['foto'];
+	$Source = $_POST['source'];
+
+	$sql = "INSERT INTO foto_DB (name,date,foto,source) VALUES ('$Name','$Date','$Foto','source')";
 	
 	if(!mysqli_query($con,$sql))
 	{
@@ -21,6 +22,6 @@
 	{
 		echo 'Inserted';
 	}
-	header("refresh:1; url=display.php");
+	header("refresh:1; url=display_foto.php");
 	
 ?>
