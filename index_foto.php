@@ -9,10 +9,10 @@
 	
 	$Name = $_POST['name'];
 	$Date = $_POST['date'];
-	$Foto = $_POST['foto'];
+	$target_file = $_FILES['foto']['name'];
 	$Source = $_POST['source'];
 	
-	$sql = "INSERT INTO foto_DB (name,date,foto,source) VALUES ('$Name','$Date','$Foto','$Source')";
+	$sql = "INSERT INTO foto_DB (name,date,foto,source) VALUES ('$Name','$Date','$target_file','$Source')";
 	
 	if(!mysqli_query($con,$sql))
 	{
@@ -73,8 +73,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         	echo "Sorry, there was an error uploading your file.";
     	}
 	}
-
-
+					
 
 
 ?>
