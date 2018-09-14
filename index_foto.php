@@ -73,10 +73,9 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     	} else {
         	echo "Sorry, there was an error uploading your file.";
 		}
-	
-	
 	}
-					
+	header("Location: form_foto.php?inputsuccess");
+			die("Could not load the page");				
 
 
 ?>
