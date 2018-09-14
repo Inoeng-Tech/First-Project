@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<form>
 <div class="container" align="center">
 	<div class="row">
     	<div class="col-md-8">
@@ -62,8 +62,10 @@
 						$con-> close();			
 	  ?>
             
+          
+      <button formaction="form_foto.php" class="btn btn-secondary btn-lg btn-block">Zurück zum Input</button>
             </table>
-        
+       
         </div>
     </div>
     
@@ -74,6 +76,6 @@
     
 </div>
 
-
+</form>
 </body>
 </html>

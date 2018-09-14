@@ -98,6 +98,7 @@ textarea,
        	   
 </style>
 
+
 <form action="index_foto.php" method="post" enctype="multipart/form-data">
     <div class="panel-body">
     <fieldset class="col-md-8">
@@ -125,6 +126,7 @@ textarea,
   </div>
 
 						 <input type="submit" value="Speichern" class="btn btn-light">
+                         <button formaction="display_foto.php" class="btn btn-light">Check hier</button>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
