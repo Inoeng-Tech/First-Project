@@ -1,17 +1,17 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Input Foto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Unbenanntes Dokument</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 </head>
-<body>
-<div align="center">
-
 <style type="text/css">
-.formft {
+.formdir{
  
   margin-top: 20px;
+  margin-left: 30%;
 }
 
 .form-style-1 {
@@ -104,42 +104,63 @@ textarea,
    	   
 </style>
 
-
-<form action="index_foto.php" class="formft" method="post" enctype="multipart/form-data" >
+<body>
+<form action="index_foto.php" class="formdir" method="post" enctype="multipart/form-data" >
     <div class="panel-body">
-    <fieldset class="col-md-8">
-		<legend>Foto Input</legend>
+    <fieldset class="col-md-6">
+		<legend>Foto Wahlen</legend>
         	<div class="panel panel-default">
             	<div class="panel-body">
 					<div class="form-group" align="left">
-    						<label for="inputName">Name <span style="color:#FF0000">*</span></label>
-    						<input type="text" name="name" class="form-control" placeholder="Name des Foto"/>
-  						</div>
-						 <div class="form-row" align="left">
-    						<div class="form-group col-md-6">
-      							<label for="inputDate">Datum <span style="color:#FF0000">*</span></label>
-      							<input type="date" name="date" class="form-control" placeholder="date">
-						    </div>
-					    <div class="form-group col-md-6">
-							    <label for="inputSource">Quelle <span style="color:#FF0000">*</span></label>
-							   <input type="foto_source" name="source"  class="form-control"  placeholder="Quelle des Foto" id="textfield">
-						    </div>
-						  </div>
+    					<table>
+                        <thead>
+                			<tr>
+                    			<th><img src="uploads" class="rounded mx-auto d-block" alt=""></th>
+                        </table>
+    				</div>
+                 </div>
+             </div>    
+                 
+<?php
+  $dir = 'uploads';
+  $images = glob($dir . "/*.jpg");
   
-						  <div class="form-group" align="left">
-					    <label for="inputFoto">Bild hochladen <span style="color:#FF0000">*</span></label>
-					     <input type="file" name="foto" class="form-control" id="foto">
-  </div>
+  foreach($images as $image)
+{
+  echo $image;
+}
+  
+  // Initiate array which will contain the image name
+  $imgs_arr = array();
+  // Check if image directory exists
+  if (file_exists($dir) && is_dir($dir) ) {
+    
+      // Get files from the directory
+      $dir_arr = scandir($dir);
+      $arr_files = array_diff($dir_arr, array('.','..') );
+      foreach ($arr_files as $file) {
+        //Get the file path
+        $file_path = $dir."/".$file;
+        // Get extension
+        $ext = pathinfo($file_path, PATHINFO_EXTENSION);
+        if ($ext=="jpg" || $ext=="png" || $ext=="JPG" || $ext=="PNG") {
+          array_push($imgs_arr, $file);
+        }
+        
+      }
+      $count_img_index = count($imgs_arr) - 1;
+      $random_img = $imgs_arr[rand( 0, $count_img_index )];
+  }
+?>
+<img src="<?php echo $dir."/".$random_img ?>">
 
-						 <input type="submit" value="Speichern" class="btn btn-light">
-                         <button formaction="display_foto.php" class="btn btn-light">Check hier</button>
-</form>
 
+   
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+    
+    
+</form>
 </body>
 </html>

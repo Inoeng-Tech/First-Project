@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Input Foto</title>
+<title>Input Information</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -9,7 +9,7 @@
 <div align="center">
 
 <style type="text/css">
-.formft {
+.formIf {
  
   margin-top: 20px;
 }
@@ -105,32 +105,39 @@ textarea,
 </style>
 
 
-<form action="index_foto.php" class="formft" method="post" enctype="multipart/form-data" >
+<form action="index_foto.php" class="formIf" method="post" enctype="multipart/form-data" >
     <div class="panel-body">
     <fieldset class="col-md-8">
-		<legend>Foto Input</legend>
+		<legend>Information  Input</legend>
         	<div class="panel panel-default">
             	<div class="panel-body">
 					<div class="form-group" align="left">
-    						<label for="inputName">Name <span style="color:#FF0000">*</span></label>
-    						<input type="text" name="name" class="form-control" placeholder="Name des Foto"/>
+    						<label for="inputNameInfo">Titel <span style="color:#FF0000">*</span></label>
+    						<input type="text" name="name" class="form-control" placeholder="Titel der Information"/>
   						</div>
 						 <div class="form-row" align="left">
     						<div class="form-group col-md-6">
-      							<label for="inputDate">Datum <span style="color:#FF0000">*</span></label>
+      							<label for="inputDateInfo">Datum <span style="color:#FF0000">*</span></label>
       							<input type="date" name="date" class="form-control" placeholder="date">
 						    </div>
 					    <div class="form-group col-md-6">
-							    <label for="inputSource">Quelle <span style="color:#FF0000">*</span></label>
-							   <input type="foto_source" name="source"  class="form-control"  placeholder="Quelle des Foto" id="textfield">
+							    <label for="inputAuthorInfo">Autor <span style="color:#FF0000">*</span></label>
+							   <input type="foto_source" name="source"  class="form-control"  placeholder="Name des Autor" id="textfield">
 						    </div>
 						  </div>
   
 						  <div class="form-group" align="left">
-					    <label for="inputFoto">Bild hochladen <span style="color:#FF0000">*</span></label>
-					     <input type="file" name="foto" class="form-control" id="foto">
-  </div>
-
+					    	<label for="inputFotoInfo">Bild suchen <span style="color:#FF0000">*</span></label>
+					     	 <select multiple class="form-control" id="exampleFormControlSelect2">
+      							
+    						</select>
+  						</div>
+						 <div class="form-group" align="left">
+   							<label for="informationInfo">Information <span style="color:#FF0000">*</span></label>
+    						<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Schreibt hier" rows="4"></textarea>
+  						</div>
+                        
+                          
 						 <input type="submit" value="Speichern" class="btn btn-light">
                          <button formaction="display_foto.php" class="btn btn-light">Check hier</button>
 </form>
@@ -141,5 +148,5 @@ textarea,
 
 
 </div>
-</body>
+ </body>
 </html>

@@ -69,13 +69,15 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	// if everything is ok, try to upload file
 	} else {
     	if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
-        	echo "The file ". basename( $_FILES["foto"]["name"]). " has been uploaded.";
+        	echo '<a href="alert.php"></a>';
     	} else {
-        	echo "Sorry, there was an error uploading your file.";
+        	echo'<a href="fehler.php"></a>';			
 		}
 	}
-	header("Location: form_foto.php?inputsuccess");
-			die("Could not load the page");				
+	
+	
+	#header("Location: form_foto.php?inputsuccess");
+			#die("Could not load the page");				
 
 
 ?>
