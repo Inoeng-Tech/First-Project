@@ -105,54 +105,63 @@ textarea,
 </style>
 
 <body>
-<form action="index_foto.php" class="formdir" method="post" enctype="multipart/form-data" >
+
+<div class="form-popup" id="popform">
+<form action="form_info.php" class="formdir form-container" method="post" enctype="multipart/form-data" >
     <div class="panel-body">
-    <fieldset class="col-md-6">
+    <fieldset class="col-md-8">
 		<legend>Foto Wahlen</legend>
         	<div class="panel panel-default">
             	<div class="panel-body">
 					<div class="form-group" align="left">
-    					<table>
-                        <thead>
-                			<tr>
-                    			<th><img src="uploads" class="rounded mx-auto d-block" alt=""></th>
-                        </table>
     				</div>
                  </div>
              </div>    
                  
 <?php
   $dir = 'uploads';
-  $images = glob($dir . "/*.jpg");
-  
-  foreach($images as $image)
+ 
+ //Open dir
+ if ($opendir = opendir ($dir))
 {
-  echo $image;
+	
+	echo '<div class="container">';
+	
+	//read dir
+	
+	$i = 1;
+	
+	while (($file = readdir($opendir)) !== FALSE)
+	{
+		if ($file!="."&&$file!=".."){
+			
+			if($i=="1" OR $i=="4" OR $i=="7" OR $i=="10"){
+				echo '
+				<div class="row">';
+			}
+			
+			echo '
+					<div class="col-sm">
+						<img src=' .$dir. '/' .$file. ' class="img-fluid">
+				  	</div>';
+				  
+			$i++;
+			
+			if($i=="4" OR $i=="7"){
+				echo '
+				</div>';
+			}
+			
+		}
+	}
+	
+	echo '</div>';
+	
 }
-  
-  // Initiate array which will contain the image name
-  $imgs_arr = array();
-  // Check if image directory exists
-  if (file_exists($dir) && is_dir($dir) ) {
-    
-      // Get files from the directory
-      $dir_arr = scandir($dir);
-      $arr_files = array_diff($dir_arr, array('.','..') );
-      foreach ($arr_files as $file) {
-        //Get the file path
-        $file_path = $dir."/".$file;
-        // Get extension
-        $ext = pathinfo($file_path, PATHINFO_EXTENSION);
-        if ($ext=="jpg" || $ext=="png" || $ext=="JPG" || $ext=="PNG") {
-          array_push($imgs_arr, $file);
-        }
-        
-      }
-      $count_img_index = count($imgs_arr) - 1;
-      $random_img = $imgs_arr[rand( 0, $count_img_index )];
-  }
+
+ 
 ?>
-<img src="<?php echo $dir."/".$random_img ?>">
+
 
 
    
@@ -162,5 +171,7 @@ textarea,
     
     
 </form>
+
+</div>
 </body>
 </html>
