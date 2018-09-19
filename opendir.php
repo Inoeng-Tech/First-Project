@@ -113,7 +113,7 @@ textarea,
 		<legend>Foto Wahlen</legend>
         	<div class="panel panel-default">
             	<div class="panel-body">
-					<div class="form-group" align="left">
+					<div class="form-group" align="right">
     				</div>
                  </div>
              </div>    
@@ -129,27 +129,32 @@ textarea,
 	
 	//read dir
 	
-	$i = 1;
+	$i = 0;
 	
 	while (($file = readdir($opendir)) !== FALSE)
 	{
 		if ($file!="."&&$file!=".."){
 			
-			if($i=="1" OR $i=="4" OR $i=="7" OR $i=="10"){
+			if($i % 3 == 0){
 				echo '
 				<div class="row">';
 			}
 			
 			echo '
 					<div class="col-sm">
-						<img src=' .$dir. '/' .$file. ' class="img-fluid">
+						<img src=' .$dir. '/' .$file. ' class="img-fluid" onclick="myfuction" border="1" width="150px" height="150px")">
+						
+					<script>
+						function myFunction() {
+    document.getElementById("field2").value = document.getElementById("field1").value;
+}
+								
+						</script>
 				  	</div>';
 				  
 			$i++;
 			
-			if($i=="4" OR $i=="7"){
-				echo '
-				</div>';
+			
 			}
 			
 		}
@@ -157,7 +162,6 @@ textarea,
 	
 	echo '</div>';
 	
-}
 
  
 ?>
