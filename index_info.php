@@ -1,6 +1,5 @@
 
-	
-	<?php
+<?php
 	//connection to Database
 	$con = mysqli_connect("localhost", "web13_usr", "Ueuj114~", "kuebomare");
 	
@@ -25,11 +24,9 @@
 	{
 		echo 'Inserted';
 	}
+	header("refresh:1; url=form_info.php");
 	
 ?>
-	
-	
-	
 	
 	
 	

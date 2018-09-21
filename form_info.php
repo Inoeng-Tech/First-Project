@@ -101,11 +101,13 @@ textarea,
     width: 100%;
 }
 
+.container-fluid
+.modal-body
    	   
 </style>
 
 
-<form action="index_foto.php" class="formIf" method="post" enctype="multipart/form-data" >
+<form action="index_info.php" class="formIf" method="post" enctype="multipart/form-data" >
     <div class="panel-body">
     <fieldset class="col-md-8">
 		<legend>Information  Input</legend>
@@ -113,7 +115,7 @@ textarea,
             	<div class="panel-body">
 					<div class="form-group" align="left">
     						<label for="inputNameInfo">Titel <span style="color:#FF0000">*</span></label>
-    						<input type="text" name="name" class="form-control" placeholder="Titel der Information"/>
+    						<input type="text" name="titel" class="form-control" placeholder="Titel der Information"/>
   						</div>
 						 <div class="form-row" align="left">
     						<div class="form-group col-md-6">
@@ -122,24 +124,43 @@ textarea,
 						    </div>
 					    <div class="form-group col-md-6">
 							    <label for="inputAuthorInfo">Autor <span style="color:#FF0000">*</span></label>
-							   <input type="foto_source" name="source"  class="form-control"  placeholder="Name des Autor" id="textfield">
+							   <input type="foto_source" name="autor"  class="form-control"  placeholder="Name des Autor" id="textfield">
 						    </div>
 						  </div>
   
-						  <div class="form-group" align="left">
-					    	<label for="inputFotoInfo">Bild suchen <span style="color:#FF0000">*</span></label>
-					     	 <select multiple class="form-control" id="exampleFormControlSelect2">
-      							
-    						</select>
+  
+  						<div class="panel-body">
+							<div class="form-group" align="left">
+    						<label >   
+                             
+                      <!-- Large modal -->
+						<button type="button" class="btn btn-light" data-toggle="modal" data-target=".bd-example-modal-lg">Foto suchen <span style="color:#FF0000">*</span></button>
+                            </label>
   						</div>
+  						
+                        
 						 <div class="form-group" align="left">
    							<label for="informationInfo">Information <span style="color:#FF0000">*</span></label>
-    						<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Schreibt hier" rows="4"></textarea>
+    						<textarea class="form-control" name="text" id="exampleFormControlTextarea1" placeholder="Schreibt hier" rows="4"></textarea>
   						</div>
                         
-                          
+                         
+                                                  
 						 <input type="submit" value="Speichern" class="btn btn-light">
-                         <button formaction="display_foto.php" class="btn btn-light">Check hier</button>
+                         <button formaction="display_info.php" class="btn btn-light">Check hier</button>
+                         
+                         
+                         <!-- Modal body -->
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                             
+                              <?php include ("opendir.php"); ?> 
+                              
+                            </div>
+                          </div>
+                        </div>
+                        
 </form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
