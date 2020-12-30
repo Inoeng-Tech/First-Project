@@ -18,8 +18,7 @@ void order(char words[])
 int main()
 {
     char wordsinput[122], wordsoutput[122];
-    int r;
-
+   
     scanf("%s", wordsinput);
 
     order(wordsinput);
